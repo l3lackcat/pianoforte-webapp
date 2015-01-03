@@ -3,8 +3,8 @@
 angular.module('pianoforteApp')
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/admin', {
-        templateUrl: 'app/admin/admin.html',
-        controller: 'AdminCtrl'
+      .when('/login', {
+        templateUrl: 'app/views/login/login.html',
+        controller: 'LoginCtrl'
       });
   });
