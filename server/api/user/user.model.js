@@ -3,17 +3,18 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
+var autoIncrement = require('mongoose-auto-increment');
 
 var UserSchema = new Schema({
-  name: String,
   email: { type: String, lowercase: true },
-  role: {
-    type: String,
-    default: 'user'
-  },
+  role: { type: String, default: 'employee' },
   hashedPassword: String,
-  provider: String,
-  salt: String
+  salt: String,
+  lastLogon: { type : Date },
+  profile: {
+    employee: { type: Schema.Types.ObjectId, ref: 'Employee' },
+    teacher: { type: Schema.Types.ObjectId, ref: 'Teacher' }
+  }
 });
 
 /**
@@ -31,14 +32,14 @@ UserSchema
   });
 
 // Public profile information
-UserSchema
-  .virtual('profile')
-  .get(function() {
-    return {
-      'name': this.name,
-      'role': this.role
-    };
-  });
+// UserSchema
+//   .virtual('profile')
+//   .get(function() {
+//     return {
+//       'name': this.name,
+//       'role': this.role
+//     };
+//   });
 
 // Non-sensitive info we'll be putting in the token
 UserSchema
@@ -138,5 +139,12 @@ UserSchema.methods = {
     return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
   }
 };
+
+UserSchema.plugin(autoIncrement.plugin, {
+    model: 'User',
+    field: 'id',
+    startAt: 1,
+    incrementBy: 1
+});
 
 module.exports = mongoose.model('User', UserSchema);

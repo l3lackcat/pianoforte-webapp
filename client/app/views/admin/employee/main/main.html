@@ -1,0 +1,48 @@
+<div navbar></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3 sidebar" sidebar></div>
+    <div class="col-xs-9 content">
+      <h2 class="page-header">
+        <span>Employee List</span>
+        <a class="btn btn-primary pull-right" href="/admin/employees/new"><i class="glyphicon glyphicon-plus"></i> Add</a>
+      </h2>
+
+      <div class="row">
+        <div class="col-xs-offset-8 col-xs-4">
+          <div class="input-group pull-right">
+            <input type="text" class="form-control" placeholder="Search">
+            <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <table ng-table="tableParams" class="table table-hover table-condensed">
+            <tr ng-repeat="employee in employeeList">
+              <td data-title="'#'" class="text-center" width="8%">
+                {{ $index + 1 }}
+              </td>
+              <td data-title="'Name'" class="text-left" width="28%">
+                {{ employee.firstname.th + ' ' + employee.lastname.th }}
+              </td>
+              <td data-title="'Nickname'" class="text-center" width="12%">
+                {{ employee.nickname.th }}
+              </td>
+              <td data-title="'Role'" class="text-center" width="12%">
+                {{ employee.role }}
+              </td>
+              <td data-title="'Branch'" class="text-center" width="28%">
+                {{ employee.branch.name }}
+              </td>
+              <td data-title="''" class="text-center" width="12%">
+                <a href="/admin/employees/info/{{ employee._id }}">View</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

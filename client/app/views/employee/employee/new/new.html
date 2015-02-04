@@ -1,0 +1,103 @@
+<div navbar></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3 sidebar" sidebar></div>
+    <div class="col-xs-9 content">
+      <div class="panel panel-default">
+        <div class="panel-heading">Create a new employee</div>
+        <div class="panel-body">
+          <form class="form-horizontal" name="form" ng-submit="create(form)" novalidate>
+            <h4 class="page-header">English Information</h4>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="input-firstname-en" class="col-xs-4 control-label">First Name:</label>
+                  <div class="col-xs-8">
+                    <input type="text" id="input-firstname-en" name="firstnameEn" class="form-control" placeholder="First Name" ng-model="employee.firstname.en" autofocus required />
+                    <p class="text-danger" ng-show="errors.firstnameEn != ''">
+                      <em>{{ errors.firstnameEn }}</em>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="input-lastname-en" class="col-xs-4 control-label">Last Name:</label>
+                  <div class="col-xs-8">
+                    <input type="text" id="input-lastname-en" name="lastnameEn" class="form-control" placeholder="Last Name" ng-model="employee.lastname.en" required />
+                    <p class="text-danger" ng-show="errors.lastnameEn != ''">
+                      <em>{{ errors.lastnameEn }}</em>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="input-nickname-en" class="col-xs-4 control-label">Nickname:</label>
+                  <div class="col-xs-8">
+                    <input type="text" id="input-nickname-en" name="nicknameEn" class="form-control" placeholder="Nickname" ng-model="employee.nickname.en" required />
+                    <p class="text-danger" ng-show="errors.nicknameEn != ''">
+                      <em>{{ errors.nicknameEn }}</em>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h4 class="page-header">Thai Information</h4>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="input-firstname-en" class="col-xs-4 control-label">First Name:</label>
+                  <div class="col-xs-8">
+                    <input type="text" id="input-firstname-en" name="firstnameTh" class="form-control" placeholder="First Name" ng-model="employee.firstname.th" required />
+                    <p class="text-danger" ng-show="errors.firstnameTh != ''">
+                      <em>{{ errors.firstnameTh }}</em>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="input-lastname-th" class="col-xs-4 control-label">Last Name:</label>
+                  <div class="col-xs-8">
+                    <input type="text" id="input-lastname-th" name="lastnameTh" class="form-control" placeholder="Last Name" ng-model="employee.lastname.th" required />
+                    <p class="text-danger" ng-show="errors.lastnameTh != ''">
+                      <em>{{ errors.lastnameTh }}</em>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="input-nickname-th" class="col-xs-4 control-label">Nickname:</label>
+                  <div class="col-xs-8">
+                    <input type="text" id="input-nickname-th" name="nicknameTh" class="form-control" placeholder="Nickname" ng-model="employee.nickname.th" required />
+                    <p class="text-danger" ng-show="errors.nicknameTh != ''">
+                      <em>{{ errors.nicknameTh }}</em>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="col-xs-offset-2 col-xs-10">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <a class="btn btn-default" href="/employees">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div navbar></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3 sidebar" sidebar></div>
+    <div class="col-xs-9 content">
+      <h2 class="page-header">
+        <span>User List</span>
+        <a class="btn btn-primary pull-right" href="/admin/users/new"><i class="glyphicon glyphicon-plus"></i> Add</a>
+      </h2>
+
+      <div class="row">
+        <div class="col-xs-offset-8 col-xs-4">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search">
+            <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <table ng-table="tableParams" class="table table-hover table-condensed">
+            <tr ng-repeat="user in userList">
+              <td data-title="'#'" class="text-center" width="8%">
+                {{ $index + 1 }}
+              </td>
+              <td data-title="'Username'" class="text-left" width="28%">
+                {{ user.email }}
+              </td>
+              <td data-title="'Display Name'" class="text-left" width="20%">
+                {{ user | displayName }}
+              </td>
+              <td data-title="'Role'" class="text-center" width="8%">
+                {{ user.role }}
+              </td>
+              <td data-title="'Last logon'" class="text-center" width="28%">
+                {{ user.lastLogon | date:'dd-MM-yyyy HH:mm:ss' }}
+              </td>
+              <td data-title="''" class="text-center" width="8%">
+                <a href="/admin/users/info/{{ user._id }}">View</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- <div class="panel panel-default">
+        <div class="panel-heading">User List</div>
+        <div class="panel-body">
+      
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

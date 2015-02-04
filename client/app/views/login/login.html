@@ -4,28 +4,35 @@
       <img src="assets/images/logo_180x88.png" alt="Pianoforte">
     </div>
     <div class="panel panel-primary">
-      <div class="panel-heading">Please login</div>
+      <div class="panel-heading">{{ 'LABEL.PLEASE_LOGIN' | translate }}</div>
       <div class="panel-body">
         <form class="form-signin" name="form" novalidate ng-submit="login(form)">
           <div class="form-group">
-            <label for="inputUsername">Username</label>
+            <label for="inputUsername">{{ 'LABEL.USERNAME' | translate }}</label>
             <input type="text" id="inputUsername" name="email" class="form-control" placeholder="Username" ng-model="user.email" required autofocus />
           </div>
           <div class="form-group">
-            <label for="inputPassword">Password</label>
+            <label for="inputPassword">{{ 'LABEL.PASSWORD' | translate }}</label>
             <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" ng-model="user.password" required />
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Role</label>
+            <ui-select ng-model="role.selected" on-select="onSelectRole($item)" required>
+              <ui-select-match placeholder="Select a role...">{{ $select.selected.title }}</ui-select-match>
+              <ui-select-choices repeat="role in roles | filter: $select.search">
+                <div ng-bind-html="role.title | highlight: $select.search"></div>
+              </ui-select-choices>
+            </ui-select>
           </div>
           <div class="form-group has-error">
             <p class="help-block">{{ errors.message }}</p>
           </div>
-          <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit">Login</button>
-          </div>
+          <button class="btn btn-primary btn-block" type="submit">{{ 'LABEL.LOGIN' | translate }}</button>
         </form>
       </div>
     </div>
     <div class="link-signup">
-      <a href="/signup">Sign up for a new account</a>
+      <a href="/signup">{{ 'LABEL.SIGN_UP_FOR_A_NEW_ACCOUNT' | translate }}</a>
     </div>
   </div>
 </div>

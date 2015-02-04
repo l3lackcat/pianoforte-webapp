@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><strong>{{ menu.title }}</strong></div>
+
+  <!-- List group -->
+  <div class="list-group">
+    <a class="list-group-item" ng-repeat="menu in menu.items" ng-class="{ active: isActive(menu.activePath) }" href="{{ menu.link }}">{{ menu.title }}</a>
+  </div>
+</div>

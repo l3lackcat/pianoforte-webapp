@@ -4,33 +4,50 @@
       <img src="assets/images/logo_180x88.png" alt="Pianoforte">
     </div>
     <div class="panel panel-primary">
-      <div class="panel-heading">Create new account</div>
+      <div class="panel-heading">{{ 'LABEL.CREATE_NEW_ACCOUNT' | translate }}</div>
       <div class="panel-body">
         <form class="form-signup" name="form" novalidate ng-submit="signup(form)">
-          <div class="form-group">
-            <label for="inputFirstName">First name</label>
-            <input type="text" class="form-control" id="inputFirstName" placeholder="Enter first name" required autofocus />
+          <!-- <div class="form-group" ng-class="{ 'has-success': form.firstname.$valid && submitted, 'has-error': form.firstname.$invalid && submitted }">
+            <label for="inputFirstname">First name</label>
+            <input type="text" class="form-control" name="firstname" id="inputFirstname" placeholder="First name" ng-model="employee.firstname" required autofocus />
+            <p class="help-block" ng-show="form.firstname.$error.required && submitted">First name is required</p>
           </div>
-          <div class="form-group">
-            <label for="inputLastName">Last name</label>
-            <input type="text" class="form-control" id="inputLastName" placeholder="Enter last name" required />
+
+          <div class="form-group" ng-class="{ 'has-success': form.lastname.$valid && submitted, 'has-error': form.lastname.$invalid && submitted }">
+            <label for="inputLastname">Last name</label>
+            <input type="text" class="form-control" name="lastname" id="inputLastname" placeholder="Last name" ng-model="employee.lastname" required />
+            <p class="help-block" ng-show="form.lastname.$error.required && submitted">Last name is required</p>
           </div>
-          <div class="form-group">
-            <label for="inputUsername">Username</label>
-            <input type="text" class="form-control" id="inputUsername" placeholder="Enter username" required />
+
+          <div class="form-group" ng-class="{ 'has-success': form.nickname.$valid && submitted, 'has-error': form.nickname.$invalid && submitted }">
+            <label for="inputNickname">Nickname</label>
+            <input type="text" class="form-control" name="nickname" id="inputNickname" placeholder="Nickname" ng-model="employee.nickname" required />
+            <p class="help-block" ng-show="form.nickname.$error.required && submitted">Nickname is required</p>
+          </div> -->
+
+          <h1 class="seperator"></h1>
+          
+          <div class="form-group" ng-class="{ 'has-success': form.displayName.$valid && submitted, 'has-error': form.displayName.$invalid && submitted }">
+            <label for="inputDisplayName">{{ 'LABEL.DISPLAY_NAME' | translate }}</label>
+            <input type="text" class="form-control" name="displayName" id="inputDisplayName" placeholder="{{ 'LABEL.DISPLAY_NAME' | translate }}" ng-model="user.displayName" required />
+            <p class="help-block" ng-show="form.displayName.$error.required && submitted">Display name is required</p>
           </div>
-          <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Enter password" required />
+
+          <div class="form-group" ng-class="{ 'has-success': form.username.$valid && submitted, 'has-error': form.username.$invalid && submitted }">
+            <label for="inputUsername">{{ 'LABEL.USERNAME' | translate }}</label>
+            <input type="text" class="form-control" name="username" id="inputUsername" placeholder="{{ 'LABEL.USERNAME' | translate }}" ng-model="user.username" required />
+            <p class="help-block" ng-show="form.username.$error.required && submitted">Username is required</p>
           </div>
-          <div class="form-group">
-            <label for="inputPassword">Register Code</label>
-            <input type="password" class="form-control" id="inputRegisterCode" placeholder="Enter register code" required />
+          <!--
+          <div class="form-group" ng-class="{ 'has-success': form.registerCode.$valid && submitted, 'has-error': form.registerCode.$invalid && submitted }">
+            <label for="inputRegisterCode">Register code</label>
+            <input type="text" class="form-control" name="registerCode" id="inputRegisterCode" placeholder="Register code" ng-model="registerCode" required />
+            <p class="help-block" ng-show="form.registerCode.$error.required && submitted">Register code is required</p>
           </div>
-          <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-            <a href="/" class="btn btn-default btn-block">Cancel</a>
-          </div>
+          -->
+          <button class="btn btn-primary btn-block" type="submit">{{ 'LABEL.SIGN_UP' | translate }}</button>
+          <a href="/" class="btn btn-default btn-block">{{ 'LABEL.CANCEL' | translate }}</a>
+        
         </form>
       </div>
     </div>

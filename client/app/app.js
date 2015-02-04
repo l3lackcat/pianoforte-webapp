@@ -6,16 +6,28 @@ angular.module('pianoforteApp', [
   'ngSanitize',
   'ngRoute',
   'btford.socket-io',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'pascalprecht.translate',
+  'ngTable',
+  'ui.select'
 ])
-  .config(function ($routeProvider, $locationProvider, $httpProvider) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider, $translateProvider, uiSelectConfig) {
     $routeProvider
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/dashboard',
+        roles: ['employee', 'manager']
       });
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
+
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'app/localization/',
+      suffix: '.json'
+    });
+    $translateProvider.preferredLanguage('en');
+
+    uiSelectConfig.theme = 'bootstrap';
   })
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
@@ -30,7 +42,7 @@ angular.module('pianoforteApp', [
       },
 
       // Intercept 401s and redirect you to login
-      responseError: function(response) {
+      responseError: function (response) {
         if(response.status === 401) {
           $location.path('/login');
           // remove any stale tokens
@@ -47,9 +59,26 @@ angular.module('pianoforteApp', [
   .run(function ($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$routeChangeStart', function (event, next) {
-      Auth.isLoggedInAsync(function(loggedIn) {
-        if (next.authenticate && !loggedIn) {
+      Auth.isLoggedInAsync(function (loggedIn) {
+        if (loggedIn === false) {
           $location.path('/login');
+        } else {
+          var user = Auth.getCurrentUser();
+          var role = user.role;
+
+          if (next.roles.indexOf(role) === -1) {
+            if (role === 'admin') {
+              $location.path('/admin/dashboard');
+            } else if (role === 'manager') {
+              $location.path('/dashboard');
+            } else if (role === 'employee') {
+              $location.path('/dashboard');
+            } else if (role === 'teacher') {
+              // TODO
+            } else if (role === 'student') {
+              // TODO
+            }
+          }
         }
       });
     });

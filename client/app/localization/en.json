@@ -1,0 +1,11 @@
+{
+  "LABEL.CANCEL": "Cancel",
+  "LABEL.CREATE_NEW_ACCOUNT": "Create new account",
+  "LABEL.DISPLAY_NAME": "Display name",
+  "LABEL.LOGIN": "Login",
+  "LABEL.PASSWORD": "Password",
+  "LABEL.PLEASE_LOGIN": "Please login",
+  "LABEL.SIGN_UP": "Sign up",
+  "LABEL.SIGN_UP_FOR_A_NEW_ACCOUNT": "Sign up for a new account",
+  "LABEL.USERNAME": "Username"
+}

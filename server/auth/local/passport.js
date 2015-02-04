@@ -9,15 +9,32 @@ exports.setup = function (User, config) {
     function(email, password, done) {
       User.findOne({
         email: email.toLowerCase()
-      }, function(err, user) {
+      })
+      .populate('profile.employee profile.teacher')
+      .exec(function (err, user) {
         if (err) return done(err);
 
         if (!user) {
-          return done(null, false, { message: 'This email is not registered.' });
+          return done(null, false, { message: 'This username is not registered.' });
         }
         if (!user.authenticate(password)) {
           return done(null, false, { message: 'This password is not correct.' });
         }
+
+        var role = user.role;
+        if ((role === 'employee') || (role === 'manager') || (role === 'admin')) {
+          if (user.profile.employee.status !== 'active') {
+            return done(null, false, { message: 'This username is not active.' });
+          }
+        } else if (role === 'teacher') {
+          if (user.profile.teacher.status !== active) {
+            return done(null, false, { message: 'This username is not active.' });
+          }
+        }
+
+        user.lastLogon = Date.now();
+        user.save();
+
         return done(null, user);
       });
     }

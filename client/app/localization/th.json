@@ -1,0 +1,11 @@
+{
+  "LABEL.CANCEL": "ยกเลิก",
+  "LABEL.CREATE_NEW_ACCOUNT": "สมัครสมาชิกใหม่",
+  "LABEL.DISPLAY_NAME": "ชื่อในระบบ",
+  "LABEL.LOGIN": "เข้าสู่ระบบ",
+  "LABEL.PASSWORD": "รหัสผ่าน",
+  "LABEL.PLEASE_LOGIN": "กรุณาเข้าสู่ระบบ",
+  "LABEL.SIGN_UP": "สมัครสมาชิก",
+  "LABEL.SIGN_UP_FOR_A_NEW_ACCOUNT": "สมัครสมาชิกใหม่",
+  "LABEL.USERNAME": "ชื่อผู้ใช้"
+}

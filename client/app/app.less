@@ -16,13 +16,39 @@
 }
 
 .container {
-	width: 970px;
-	max-width: none !important;
+  width: 970px;
+  max-width: none !important;
+}
+
+.content {
+  .page-header {
+    margin-top: 0;
+  } 
 }
 
 // injector
+@import 'directives/navbar/navbar.less';
+@import 'directives/sidebar/sidebar.less';
+@import 'views/account/address/address.less';
+@import 'views/account/emails/emails.less';
+@import 'views/account/phones/phones.less';
+@import 'views/account/profile/profile.less';
+@import 'views/account/settings/settings.less';
+@import 'views/admin/branch/info/info.less';
+@import 'views/admin/branch/main/main.less';
+@import 'views/admin/branch/new/new.less';
+@import 'views/admin/dashboard/dashboard.less';
+@import 'views/admin/employee/info/info.less';
+@import 'views/admin/employee/main/main.less';
+@import 'views/admin/employee/new/new.less';
+@import 'views/admin/user/info/info.less';
+@import 'views/admin/user/main/main.less';
+@import 'views/admin/user/new/new.less';
+@import 'views/employee/dashboard/dashboard.less';
+@import 'views/employee/employee/info/info.less';
+@import 'views/employee/employee/main/main.less';
+@import 'views/employee/employee/new/new.less';
 @import 'views/login/login.less';
-@import 'views/main/main.less';
 @import 'views/signup/signup.less';
 @import 'modal/modal.less';
 // endinjector

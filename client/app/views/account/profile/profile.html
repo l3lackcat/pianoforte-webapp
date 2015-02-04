@@ -1,0 +1,163 @@
+<div navbar></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3 sidebar" sidebar></div>
+    <div class="col-xs-9 content">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="title"><strong>English</strong></span>
+          <a href="" class="pull-right">
+            <i class="glyphicon glyphicon-pencil"></i>
+            <span>Edit</span>
+          </a>
+        </div>
+        <div class="panel-body">
+          <form class="form form-horizontal" name="form-en-info" ng-submit="" novalidate>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="input-firstname-en" class="col-xs-3 control-label">First Name:</label>
+                  <div class="col-xs-4" ng-hide="isEdit">
+                    <p class="form-control-static">{{ profile.firstname.en }}</p>
+                  </div>
+                  <div class="col-xs-4" ng-show="isEdit">
+                    <input type="text" id="input-firstname-en" name="firstnameEn" class="form-control" placeholder="First Name" ng-model="profile.firstname.en" autofocus required />
+                  </div>
+                  <div class="col-xs-5" ng-show="isEdit && errors.firstnameEn != ''">
+                    <p class="text-danger form-control-static"><em>{{ errors.firstnameEn }}</em></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="input-lastname-en" class="col-xs-3 control-label">Last Name:</label>
+                  <div class="col-xs-4" ng-hide="isEdit">
+                    <p class="form-control-static">{{ profile.lastname.en }}</p>
+                  </div>
+                  <div class="col-xs-4" ng-show="isEdit">
+                    <input type="text" id="input-lastname-en" name="lastnameEn" class="form-control" placeholder="Last Name" ng-model="profile.lastname.en" required />
+                  </div>
+                  <div class="col-xs-5" ng-show="isEdit && errors.lastnameEn != ''">
+                    <p class="text-danger form-control-static"><em>{{ errors.lastnameEn }}</em></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="input-nickname-en" class="col-xs-3 control-label">Nickname:</label>
+                  <div class="col-xs-4" ng-hide="isEdit">
+                    <p class="form-control-static">{{ profile.nickname.en }}</p>
+                  </div>
+                  <div class="col-xs-4" ng-show="isEdit">
+                    <input type="text" id="input-nickname-en" name="nicknameEn" class="form-control" placeholder="Nickname" ng-model="profile.nickname.en" required />
+                  </div>
+                  <div class="col-xs-5" ng-show="isEdit && errors.nicknameEn != ''">
+                    <p class="text-danger form-control-static"><em>{{ errors.nicknameEn }}</em></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="title"><strong>ไทย</strong></span>
+          <a href="" class="pull-right">
+            <i class="glyphicon glyphicon-pencil"></i>
+            <span>Edit</span>
+          </a>
+        </div>
+        <div class="panel-body">
+          <form class="form form-horizontal" name="form-th-info" ng-submit="create(form)" novalidate>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="input-firstname-th" class="col-xs-3 control-label">ชื่อจริง:</label>
+                  <div class="col-xs-4" ng-hide="isEdit">
+                    <p class="form-control-static">{{ profile.firstname.th }}</p>
+                  </div>
+                  <div class="col-xs-4" ng-show="isEdit">
+                    <input type="text" id="input-firstname-th" name="firstnameTh" class="form-control" placeholder="ชื่อจริง" ng-model="profile.firstname.th" required />
+                  </div>
+                  <div class="col-xs-5" ng-show="isEdit && errors.firstnameTh != ''">
+                    <p class="text-danger form-control-static"><em>{{ errors.firstnameTh }}</em></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="input-lastname-th" class="col-xs-3 control-label">นามสกุล:</label>
+                  <div class="col-xs-4" ng-hide="isEdit">
+                    <p class="form-control-static">{{ profile.lastname.th }}</p>
+                  </div>
+                  <div class="col-xs-4" ng-show="isEdit">
+                    <input type="text" id="input-lastname-th" name="lastnameTh" class="form-control" placeholder="นามสกุล" ng-model="profile.lastname.th" required />
+                  </div>
+                  <div class="col-xs-5" ng-show="isEdit && errors.lastnameTh != ''">
+                    <p class="text-danger form-control-static"><em>{{ errors.lastnameTh }}</em></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="input-nickname-th" class="col-xs-3 control-label">ชื่อเล่น:</label>
+                  <div class="col-xs-4" ng-hide="isEdit">
+                    <p class="form-control-static">{{ profile.nickname.th }}</p>
+                  </div>
+                  <div class="col-xs-4" ng-show="isEdit">
+                    <input type="text" id="input-nickname-th" name="nicknameTh" class="form-control" placeholder="ชื่อเล่น" ng-model="profile.nickname.th" required />
+                  </div>
+                  <div class="col-xs-5" ng-show="isEdit && errors.nicknameTh != ''">
+                    <p class="text-danger form-control-static"><em>{{ errors.nicknameTh }}</em></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="input-gender" class="col-xs-3 control-label">เพศ:</label>
+                  <div class="col-xs-4" ng-hide="isEdit">
+                    <p class="form-control-static">{{ profile.gender }}</p>
+                  </div>
+                  <div class="col-xs-4" ng-show="isEdit">
+                    <input type="text" id="input-gender" name="gender" class="form-control" placeholder="เพศ" ng-model="profile.gender" required />
+                  </div>
+                  <div class="col-xs-5" ng-show="isEdit && errors.gender != ''">
+                    <p class="text-danger form-control-static"><em>{{ errors.gender }}</em></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="input-birthdate" class="col-xs-3 control-label">วันเกิด:</label>
+                  <div class="col-xs-4" ng-hide="isEdit">
+                    <p class="form-control-static">{{ profile.birthdate }}</p>
+                  </div>
+                  <div class="col-xs-4" ng-show="isEdit">
+                    <input type="text" id="input-birthdate" name="birthdate" class="form-control" placeholder="เพศ" ng-model="profile.birthdate" required />
+                  </div>
+                  <div class="col-xs-5" ng-show="isEdit && errors.birthdate != ''">
+                    <p class="text-danger form-control-static"><em>{{ errors.birthdate }}</em></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>
