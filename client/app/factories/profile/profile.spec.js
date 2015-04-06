@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Profile', function () {
+describe('Service: ProfileFactory', function () {
 
   // load the service's module
   beforeEach(module('pianoforteApp'));
 
   // instantiate service
-  var Profile;
-  beforeEach(inject(function (_Profile_) {
-    Profile = _Profile_;
+  var ProfileFactory;
+  beforeEach(inject(function (_ProfileFactory_) {
+    ProfileFactory = _ProfileFactory_;
   }));
 
   it('should do something', function () {
-    expect(!!Profile).toBe(true);
+    expect(!!ProfileFactory).toBe(true);
   });
 
 });

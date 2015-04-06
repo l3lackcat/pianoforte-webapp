@@ -7,9 +7,10 @@ var router = express.Router();
 
 router.get('/findAll', controller.findAll);
 router.post('/findAllByBranch', controller.findAllByBranch);
-router.post('/:id', controller.show);
+router.post('/update', controller.update);
+// router.post('/:id', controller.show);
 router.post('/', controller.create);
-router.put('/:id', controller.update);
-router.patch('/:id', controller.update);
+// router.put('/:id/employee', controller.update);
+// router.patch('/:id', controller.update);
 
 module.exports = router;

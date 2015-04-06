@@ -1,0 +1,93 @@
+<div class="modal-header">
+  <h4 class="modal-title">Profile Editor</h4>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal">
+    <!-- Firstname -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="input-firstname" class="col-xs-4 control-label">ชื่อ:</label>
+          <div class="col-xs-6">
+            <input type="text" id="input-firstname" name="firstname" class="form-control" placeholder="First Name" ng-model="profile.firstname.th" autofocus required />
+            <p class="text-danger" ng-show="errors.firstname == ''">
+              <em>{{ errors.firstname }}</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lastname -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="input-lastname" class="col-xs-4 control-label">นามสกุล:</label>
+          <div class="col-xs-6">
+            <input type="text" id="input-lastname" name="lastname" class="form-control" placeholder="First Name" ng-model="profile.lastname.th" required />
+            <p class="text-danger" ng-show="errors.lastname == ''">
+              <em>{{ errors.lastname }}</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nickname -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="input-nickname" class="col-xs-4 control-label">ชื่อเล่น:</label>
+          <div class="col-xs-6">
+            <input type="text" id="input-nickname" name="nickname" class="form-control" placeholder="First Name" ng-model="profile.nickname.th" required />
+            <p class="text-danger" ng-show="errors.nickname == ''">
+              <em>{{ errors.nickname }}</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gender -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="input-gender" class="col-xs-4 control-label">เพศ:</label>
+          <div class="col-xs-6">
+            <div class="btn-group">
+              <label class="btn btn-default" ng-model="profile.gender" btn-radio="'M'" uncheckable>ชาย</label>
+              <label class="btn btn-default" ng-model="profile.gender" btn-radio="'F'" uncheckable>หญิง</label>
+            </div>
+            <p class="text-danger" ng-show="errors.gender == ''">
+              <em>{{ errors.gender }}</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Birth date -->
+    <!-- <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="input-birthDate" class="col-xs-4 control-label">วันเกิด:</label>
+          <div class="col-xs-5">
+            <div class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{ format }}" ng-model="profile.birthDate" is-open="opened" close-text="Close" />
+              <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+            <p class="text-danger" ng-show="errors.birthDate == ''">
+              <em>{{ errors.birthDate }}</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="submit" class="btn btn-primary" ng-click="onSubmit()">Save</button>
+  <button class="btn btn-danger" ng-click="onCancel()">Cancel</button>
+</div>

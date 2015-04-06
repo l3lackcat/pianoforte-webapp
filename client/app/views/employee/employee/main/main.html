@@ -2,7 +2,18 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-3 sidebar" sidebar></div>
+    <div class="col-xs-3 sidebar">
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><strong>Settings</strong></div>
+        <div class="panel-body">
+          <h5 class="page-header"><strong>Columns</strong></h5>
+          <div ng-repeat="(key, column) in settings.columns">
+            <input type="checkbox" ng-model="column.visible" /> {{ column.text }}
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="col-xs-9 content">
       <h2 class="page-header">
         <span>รายชื่อพนักงานทั้งหมด</span>
@@ -24,20 +35,17 @@
               <td data-title="'#'" class="text-center" width="8%">
                 {{ $index + 1 }}
               </td>
-              <td data-title="'ชื่อ - นามสกุล'" class="text-left" width="36%">
-                {{ employee.firstname.th + ' ' + employee.lastname.th }}
+              <td class="text-left"data-title="settings.columns.name.text"  ng-show="settings.columns.name.visible">
+                {{ employee | displayedFullNameFilter }}
               </td>
-              <td data-title="'ชื่อเล่น'" class="text-center" width="12%">
-                {{ employee.nickname.th }}
+              <td class="text-center" data-title="settings.columns.nickname.text" ng-show="settings.columns.nickname.visible">
+                {{ employee | displayedNicknameFilter }}
               </td>
-              <td data-title="'ตำแหน่ง'" class="text-center" width="12%">
-                {{ employee.role }}
+              <td class="text-center" data-title="settings.columns.role.text" ng-show="settings.columns.role.visible">
+                {{ employee | displayedRoleFilter }}
               </td>
-              <td data-title="'ชื่อในระบบ'" class="text-center" width="20%">
-                {{ employee | displayName }}
-              </td>
-              <td data-title="''" class="text-center" width="12%">
-                <a href="/employees/info/{{ employee._id }}">View</a>
+              <td class="text-center" data-title="settings.columns.displayedName.text" ng-show="settings.columns.displayedName.visible">
+                {{ employee | displayedNameFilter }}
               </td>
             </tr>
           </table>

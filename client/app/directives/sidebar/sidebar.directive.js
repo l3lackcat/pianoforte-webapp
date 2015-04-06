@@ -6,6 +6,10 @@ angular.module('pianoforteApp')
       templateUrl: 'app/directives/sidebar/sidebar.html',
       restrict: 'EA',
       controller: 'SidebarCtrl',
+      scope: {
+      	title: '@',
+        menuList: '='
+      },
       link: function (scope, element, attrs) {
       }
     };

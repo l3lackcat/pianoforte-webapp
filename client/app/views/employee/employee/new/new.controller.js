@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pianoforteApp')
-  .controller('EmployeeNewCtrl', function ($scope, $location, Auth, BranchService, EmployeeService) {
+  .controller('EmployeeCreationCtrl', function ($scope, $location, Auth, BranchService, EmployeeService) {
     $scope.employee = {};
     $scope.errors = {};
 
@@ -10,10 +10,10 @@ angular.module('pianoforteApp')
       $scope.errors = {};
 
       if (form.$valid) {
-        var currentUser = Auth.getCurrentUser();
+        var currentUserProfile = Auth.getCurrentUserProfile();
 
-        $scope.employee.branch = currentUser.branch;
-        $scope.employee.createdBy = currentUser._id;
+        $scope.employee.branch = currentUserProfile.branch;
+        $scope.employee.createdBy = currentUserProfile.user;
         $scope.employee.role = 'employee';
 
         EmployeeService.create($scope.employee).then(function () {

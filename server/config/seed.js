@@ -21,7 +21,7 @@ Employee.create({
     en: 'Golf',
     th: 'กอล์ฟ'
   },
-  gender: 'male',
+  gender: 'M',
   role: 'admin'
 }, function (err, employee) {
   User.create({

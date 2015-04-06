@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('pianoforteApp')
-  .controller('SidebarCtrl', function ($scope, $location, SidebarMenu) {
-    $scope.menu = SidebarMenu.getMenu();
-
+  .controller('SidebarCtrl', function ($scope, $location) {
     $scope.isActive = function (route) {
       var isActive = false;
 

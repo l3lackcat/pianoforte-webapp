@@ -95,15 +95,29 @@ angular.module('pianoforteApp')
        * @return {Object} user
        */
       getCurrentUser: function () {
-        // if (currentUser.employeeProfile !== undefined) {
-        //   currentUser.profile = angular.copy(currentUser.employeeProfile);
-        //   delete currentUser.employeeProfile;
-        // } else if (currentUser.teacherProfile !== undefined) {
-        //   currentUser.profile = angular.copy(currentUser.teacherProfile);
-        //   delete currentUser.teacherProfile;
-        // }
-
         return currentUser;
+      },
+
+      /**
+       * Gets all profile of authenticated user
+       *
+       * @return {Object} employee or teacher
+       */
+      getCurrentUserProfile: function () {
+        var profile = null;
+        var role = currentUser.role;
+
+        if (role === 'teacher') {
+          profile = currentUser.profile.teacher;
+        } else if (role === 'admin') {
+          profile = currentUser.profile.employee;
+        } else if (role === 'manager') {
+          profile = currentUser.profile.employee;
+        } else if (role === 'employee') {
+          profile = currentUser.profile.employee;
+        }
+
+        return profile;
       },
 
       /**

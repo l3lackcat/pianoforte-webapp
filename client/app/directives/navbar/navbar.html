@@ -1,23 +1,32 @@
-<div class="navbar navbar-default navbar-static-top">
+<div class="navbar navbar-inverse navbar-static-top">
   <div class="container">
     <div class="navbar-header">
-      <a href="/" class="navbar-brand">Pianoforte</a>
+      <a class="navbar-brand" href="">Pianoforte</a>
     </div>
     <div id="navbar-main">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-          	{{ currentUser | displayName }} <span class="caret"></span>
+            <span class="glyphicon glyphicon-list"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-          	<li><a href="/account/profile">
-              <i class="glyphicon glyphicon-user"></i>
-              <span>Account</span>
-            </a></li>
-          	<li><a href="" ng-click="logout()">
-              <i class="glyphicon glyphicon-log-out"></i>
-              <span>Logout</span>
-            </a></li>
+            <li ng-repeat="menu in menuList">
+              <a href="{{ menu.link }}">{{ menu.title }}</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            {{ currentUserProfile | displayedNameFilter }} <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="/settings/profile">Settings</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="" ng-click="logout()">Logout</a>
+            </li>
           </ul>
         </li>
       </ul>

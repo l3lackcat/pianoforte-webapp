@@ -11,7 +11,7 @@ angular.module('pianoforteApp', [
   'ngTable',
   'ui.select'
 ])
-  .config(function ($routeProvider, $locationProvider, $httpProvider, $translateProvider, uiSelectConfig) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider, $translateProvider, datepickerConfig, uiSelectConfig) {
     $routeProvider
       .otherwise({
         redirectTo: '/dashboard',
@@ -28,6 +28,7 @@ angular.module('pianoforteApp', [
     $translateProvider.preferredLanguage('en');
 
     uiSelectConfig.theme = 'bootstrap';
+    datepickerConfig.showWeeks = false;
   })
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {

@@ -5,6 +5,7 @@ angular.module('pianoforteApp')
     $routeProvider
       .when('/teachers/new', {
         templateUrl: 'app/views/employee/teacher/new/new.html',
-        controller: 'NewCtrl'
+        controller: 'NewCtrl',
+        roles: ['employee', 'manager']
       });
   });

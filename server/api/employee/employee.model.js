@@ -25,12 +25,12 @@ var EmployeeSchema = new Schema({
     phones: [{
       label: String,
       value: String,
-      primary: { type: Boolean, default : false }
+      primary: { type: Boolean, default: false }
     }],
     emails: [{
       label: String,
       value: String,
-      primary: { type: Boolean, default : false }
+      primary: { type: Boolean, default: false }
     }]
   },
   addresses: [{

@@ -85,16 +85,28 @@ exports.create = function (req, res) {
 
 // Updates an existing employee in the DB.
 exports.update = function (req, res) {
-  if (req.body._id) { delete req.body._id; }
-  Employee.findById(req.params.id, function (err, employee) {
+  var tempEmployee = req.body;
+
+  Employee.findById(tempEmployee._id, function (err, employee) {
     if (err) { return handleError(res, err); }
-    if (!employee) { return res.send(404); }
-    var updated = _.merge(employee, req.body);
+
+    var updated = _.merge(employee, tempEmployee);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, employee);
     });
   });
+
+  // if (req.body._id) { delete req.body._id; }
+  // Employee.findById(req.params.id, function (err, employee) {
+  //   if (err) { return handleError(res, err); }
+  //   if (!employee) { return res.send(404); }
+  //   var updated = _.merge(employee, req.body);
+  //   updated.save(function (err) {
+  //     if (err) { return handleError(res, err); }
+  //     return res.json(200, employee);
+  //   });
+  // });
 };
 
 function handleError(res, err) {

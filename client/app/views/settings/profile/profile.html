@@ -1,0 +1,121 @@
+<div navbar></div>
+
+<div class="container" id="settings-profile">
+  <div class="row">
+    <div class="col-xs-3 sidebar">
+      <sidebar title="Account settings" menu-list="sidebarMenuList"></sidebar>
+    </div>
+    <div class="col-xs-9 content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              <div class="row">
+                <div class="col-xs-9">
+                  <h4 class="text-muted">English</h4>
+                </div>
+                <div class="col-xs-3">
+                  <button class="btn btn-primary pull-right" ng-click="editEnglishProfile()">
+                    <i class="glyphicon glyphicon-pencil"></i> Edit
+                  </button>
+                </div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-3 text-muted">First Name</div>
+                <div class="col-xs-9"><strong>{{ profile.firstname.en }}</strong></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-3 text-muted">Last Name</div>
+                <div class="col-xs-9"><strong>{{ profile.lastname.en }}</strong></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-3 text-muted">Nickname</div>
+                <div class="col-xs-9"><strong>{{ profile.nickname.en }}</strong></div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              <div class="row">
+                <div class="col-xs-9">
+                  <h4 class="text-muted">Thai</h4>
+                </div>
+                <div class="col-xs-3">
+                  <button class="btn btn-primary pull-right" ng-click="editThaiProfile()">
+                    <i class="glyphicon glyphicon-pencil"></i> Edit
+                  </button>
+                </div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-3 text-muted">ชื่อ</div>
+                <div class="col-xs-9"><strong>{{ profile.firstname.th }}</strong></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-3 text-muted">นามสกุล</div>
+                <div class="col-xs-9"><strong>{{ profile.lastname.th }}</strong></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-3 text-muted">ชื่อเล่น</div>
+                <div class="col-xs-9"><strong>{{ profile.nickname.th }}</strong></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-3 text-muted">เพศ</div>
+                <div class="col-xs-9" ng-hide="profile.gender == undefined"><strong>{{ profile.gender }}</strong></div>
+                <div class="col-xs-9" ng-show="profile.gender == undefined">
+                  <a href="" ng-click="editThaiProfile()">+ Add gender</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <!-- <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-3 text-muted">วันเกิด</div>
+                <div class="col-xs-9" ng-hide="profile.birthDate == undefined"><strong>{{ profile.birthDate }}</strong></div>
+                <div class="col-xs-9" ng-show="profile.birthDate == undefined">
+                  <a href="" ng-click="editThaiProfile()">+ Add birth date</a>
+                </div>
+              </div>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ angular.module('pianoforteApp')
     $routeProvider
       .when('/student/info/:studentId', {
         templateUrl: 'app/views/employee/student/info/info.html',
-        controller: 'InfoCtrl'
+        controller: 'InfoCtrl',
+        roles: ['employee', 'manager']
       });
   });
