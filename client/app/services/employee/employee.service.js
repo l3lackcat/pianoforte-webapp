@@ -8,7 +8,9 @@ angular.module('pianoforteApp')
       create: function (employee, callback) {
         var cb = callback || angular.noop;
         var deferred = $q.defer();
-        
+
+        employee.createdBy = Auth.getCurrentUser()._id;
+
         $http.post('/api/employees', employee).success(function (data) {
           deferred.resolve(data);
           return cb();
@@ -23,6 +25,9 @@ angular.module('pianoforteApp')
       update: function (employee, callback) {
         var cb = callback || angular.noop;
         var deferred = $q.defer();
+
+        employee.edittedBy = Auth.getCurrentUser()._id;
+        employee.edittedDate = moment();
 
         $http.post('/api/employees/update', employee).success(function (data) {
           deferred.resolve(data);

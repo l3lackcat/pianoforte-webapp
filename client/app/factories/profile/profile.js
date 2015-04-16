@@ -9,21 +9,21 @@ angular.module('pianoforteApp')
     };
 
     return {
-      getDisplayedName: function (profile) {
-        var displayName = '';
+      // getDisplayedName: function (profile) {
+      //   var displayName = '';
 
-        if ((profile !== null) && (profile !== undefined)) {
-          var firstname = profile.firstname.en;
-          var lastname = profile.lastname.en;
+      //   if ((profile !== null) && (profile !== undefined)) {
+      //     var firstname = profile.firstname.en;
+      //     var lastname = profile.lastname.en;
 
-          displayName += toTitleCase(firstname);
-          displayName += ' ';
-          displayName += toTitleCase(lastname).charAt(0);
-          displayName += '.';
-        }
+      //     displayName += toTitleCase(firstname);
+      //     displayName += ' ';
+      //     displayName += toTitleCase(lastname).charAt(0);
+      //     displayName += '.';
+      //   }
 
-        return displayName;
-      },
+      //   return displayName;
+      // },
 
       getDisplayedFullName: function (profile) {
         var fullName = '';

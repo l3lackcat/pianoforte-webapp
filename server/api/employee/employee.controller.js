@@ -8,7 +8,7 @@ var User = require('../user/user.model');
 exports.findAll = function(req, res) {
   Employee
   .find()
-  .populate('branch creator user')
+  .populate('branch createdBy user')
   .exec(function (err, employeeList) {
     if (err) { 
       return handleError(res, err);
@@ -65,7 +65,16 @@ exports.create = function (req, res) {
     Employee.create(employee, function (err, employee) {
       if (err) { return handleError (res, err); }
 
+      var displayedName1 = employee.firstname.en.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+
+      var displayedName2 = employee.lastname.en.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+
       User.create({
+        displayedName: displayedName1 + ' ' + displayedName2.charAt(0),
         email: email,
         password: 'Pianoforte',
         role: employee.role,

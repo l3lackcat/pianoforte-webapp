@@ -25,6 +25,7 @@ Employee.create({
   role: 'admin'
 }, function (err, employee) {
   User.create({
+    displayedName: 'Suphakiat L.',
     email: 'admin::suphakiat.lohasammakul',
     password: 'P@ssw0rd',
     role: 'admin',

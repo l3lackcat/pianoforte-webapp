@@ -6,6 +6,7 @@ var crypto = require('crypto');
 var autoIncrement = require('mongoose-auto-increment');
 
 var UserSchema = new Schema({
+  displayedName: { type: String },
   email: { type: String, lowercase: true },
   role: { type: String, default: 'employee' },
   hashedPassword: String,

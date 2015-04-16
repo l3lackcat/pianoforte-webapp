@@ -21,8 +21,6 @@ angular.module('pianoforteApp')
       $scope.errors = {};
 
       if (form.$valid) {
-        $scope.employee.createdBy = Auth.getCurrentUser()._id;
-
         EmployeeService.create($scope.employee).then(function () {
           $location.path('/admin/employees');
         }).catch( function(err) {

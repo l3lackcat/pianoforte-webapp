@@ -1,33 +1,32 @@
 'use strict';
 
 angular.module('pianoforteApp')
-  .controller('ThaiProfileEditorDialogCtrl', function ($scope, $modalInstance, profile) {
+  .controller('EnglishProfileEditorDialogCtrl', function ($scope, $modalInstance, profile) {
     $scope.profile = profile;
     $scope.errors = {};
-    $scope.format = 'dd MMMM yyyy';
 
     $scope.onSubmit = function () {
       var isValid = true;
-      var firstname = $scope.profile.firstname.th;
-      var lastname = $scope.profile.lastname.th;
-      var nickname = $scope.profile.nickname.th;
+      var firstname = $scope.profile.firstname.en;
+      var lastname = $scope.profile.lastname.en;
+      var nickname = $scope.profile.nickname.en;
 
       if ((firstname === '') || (firstname === undefined)) {
-        $scope.errors.firstname = 'กรุณากรอกชื่อจริง';
+        $scope.errors.firstname = 'Please enter first name';
         isValid = false;
       } else {
         delete $scope.errors.firstname;
       }
 
       if ((lastname === '') || (lastname === undefined)) {
-        $scope.errors.lastname = 'กรุณากรอกนามสกุล';
+        $scope.errors.lastname = 'Please enter last name';
         isValid = false;
       } else {
         delete $scope.errors.lastname;
       }
 
       if ((nickname === '') || (nickname === undefined)) {
-        $scope.errors.nickname = 'กรุณากรอกชื่อเล่น';
+        $scope.errors.nickname = 'Please enter nickname';
         isValid = false;
       } else {
         delete $scope.errors.nickname;

@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/pianoforte-dev'
   },
 
-  seedDB: true
+  seedDB: false
 };

@@ -6,31 +6,35 @@ angular.module('pianoforteApp')
     $scope.profile = Auth.getCurrentUserProfile();
     $scope.isEditMode = false;
 
-    $scope.editEnglishProfile = function () {
+    $scope.updateEdittedProfile = function (edittedProfile) {
+      EmployeeService.update(edittedProfile).then(function (profile) {
+        $scope.profile = angular.copy(profile);
+      }).catch(function (err) {
+        // TODO
+      });
+    };
+
+    $scope.removeEdittedProfile = function () {
+      // Do Nothing
+    };
+
+    $scope.openEnglishProfileEditor = function () {
       var modalInstance = null;
       var dialogOptions = DialogFactory.getDialogOptions('EnglishProfileEditor');
 
       if (dialogOptions !== undefined) {
         dialogOptions.resolve = {
           profile: function () {
-            return {
-              firstname: $scope.profile.firstname.en,
-              lastname: $scope.profile.lastname.en,
-              nickname: $scope.profile.nickname.en
-            };
+            return angular.copy($scope.profile);
           }
         };
 
         modalInstance = $modal.open(dialogOptions);
-        modalInstance.result.then(function (text) {
-          console.log('text: ' + text);
-        }, function () {
-          // Run when clicking on cancel
-        });
+        modalInstance.result.then($scope.updateEdittedProfile, $scope.removeEdittedProfile);
       }
     };
 
-    $scope.editThaiProfile = function () {
+    $scope.openThaiProfileEditor = function () {
       var modalInstance = null;
       var dialogOptions = DialogFactory.getDialogOptions('ThaiProfileEditor');
 
@@ -42,16 +46,7 @@ angular.module('pianoforteApp')
         };
 
         modalInstance = $modal.open(dialogOptions);
-
-        modalInstance.result.then(function (edittedProfile) {
-          EmployeeService.update(edittedProfile).then(function (profile) {
-            $scope.profile = angular.copy(profile);
-          }).catch(function (err) {
-            // TODO
-          });
-        }, function () {
-          // Run when clicking on cancel
-        });
+        modalInstance.result.then($scope.updateEdittedProfile, $scope.removeEdittedProfile);
       }
     };
   });

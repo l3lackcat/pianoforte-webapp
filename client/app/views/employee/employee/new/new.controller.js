@@ -13,7 +13,7 @@ angular.module('pianoforteApp')
         var currentUserProfile = Auth.getCurrentUserProfile();
 
         $scope.employee.branch = currentUserProfile.branch;
-        $scope.employee.createdBy = currentUserProfile.user;
+        // $scope.employee.createdBy = currentUserProfile.user;
         $scope.employee.role = 'employee';
 
         EmployeeService.create($scope.employee).then(function () {

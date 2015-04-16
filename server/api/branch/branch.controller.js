@@ -7,7 +7,7 @@ var Branch = require('./branch.model');
 exports.findAll = function (req, res) {
   Branch
   .find()
-  .populate('creator')
+  .populate('createdBy')
   .exec(function (err, branchList) {
     if (err) { 
       return handleError(res, err);
