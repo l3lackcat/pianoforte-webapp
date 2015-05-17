@@ -48,6 +48,10 @@ angular.module('pianoforteApp')
         modalInstance.result.then(function (phone) {
           var isSetPrimaryNumber = false;
 
+          if (phone.value.indexOf('-') !== -1) {
+            phone.value = phone.value.replace(/-/g , '');
+          }
+
           if (phone.primary === true) {
             isSetPrimaryNumber = true;
 

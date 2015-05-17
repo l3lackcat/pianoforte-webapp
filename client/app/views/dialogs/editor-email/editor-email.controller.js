@@ -8,8 +8,9 @@ angular.module('pianoforteApp')
     $scope.onSubmit = function () {
       var isValid = true;
       var value = $scope.email.value;
+      var emailRegEx = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
-      if ((value === '') || (value === undefined)) {
+      if ((value === '') || (value === undefined) || (!emailRegEx.test(value))) {
         $scope.errors.value = 'Please enter a valid email address';
         isValid = false;
       } else {
