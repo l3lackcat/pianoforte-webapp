@@ -96,7 +96,7 @@
             <td>
               <div class="row">
                 <div class="col-xs-3 text-muted">เพศ</div>
-                <div class="col-xs-9" ng-hide="profile.gender == undefined"><strong>{{ profile.gender }}</strong></div>
+                <div class="col-xs-9" ng-hide="profile.gender == undefined"><strong>{{ profile.gender | displayedGenderFilter }}</strong></div>
                 <div class="col-xs-9" ng-show="profile.gender == undefined">
                   <a href="" ng-click="openThaiProfileEditor()">+ Add gender</a>
                 </div>
