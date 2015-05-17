@@ -1,0 +1,66 @@
+<div>
+  <!-- BuildingName -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label for="input-building-name" class="col-xs-2 control-label">ชื่ออาคาร:</label>
+        <div class="col-xs-8">
+          <input type="text" id="input-building-name" name="buildingName" class="form-control" placeholder="Building name" ng-model="address.buildingName" autofocus required />
+          <p class="text-danger" ng-show="errors.buildingName != ''">
+            <em>{{ errors.buildingName }}</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- StreetAddress -->
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label for="input-street-address" class="col-xs-4 control-label">เลขที่/ซอย ถนน:</label>
+        <div class="col-xs-8">
+          <input type="text" id="input-street-address" name="streetAddress" class="form-control" placeholder="Street address" ng-model="address.streetAddress" required />
+          <p class="text-danger" ng-show="errors.streetAddress != ''">
+            <em>{{ errors.streetAddress }}</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZipCode -->
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label for="input-zip-code" class="col-xs-4 control-label">รหัสไปรษณีย์:</label>
+        <div class="col-xs-8">
+          <input type="text" id="input-zip-code" name="zipCode" class="form-control" placeholder="Zip code" ng-model="address.zipCode" required />
+          <p class="text-danger" ng-show="errors.zipCode != ''">
+            <em>{{ errors.zipCode }}</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Province -->
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label for="input-zip-code" class="col-xs-4 control-label">จังหวัด:</label>
+        <div class="col-xs-8">
+          <ui-select ng-model="province.selected" on-select="onSelectRole($item)" required>
+            <ui-select-match placeholder="Select a province...">{{ $select.selected }}</ui-select-match>
+            <ui-select-choices repeat="province in provinceList | filter: $select.search">
+              <div ng-bind-html="province | highlight: $select.search"></div>
+            </ui-select-choices>
+          </ui-select>
+          <p class="text-danger" ng-show="errors.province != ''">
+            <em>{{ errors.province }}</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

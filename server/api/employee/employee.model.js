@@ -40,7 +40,7 @@ var EmployeeSchema = new Schema({
     district: String,
     province: String,
     country: String,
-    zipCode: String
+    postcode: String
   }],
   role: { type: String, default: 'employee' },
   status: { type: String, default: 'active' },

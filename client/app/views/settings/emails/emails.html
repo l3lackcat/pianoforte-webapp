@@ -1,12 +1,54 @@
 <div navbar></div>
 
-<div class="container">
+<div class="container" id="settings-emails">
   <div class="row">
-    <div class="col-xs-3 sidebar">
-      <sidebar title="Account settings" menu-list="sidebarMenuList"></sidebar>
-    </div>
-    <div class="col-xs-9 content">
-      
-    </div>
+  <div class="col-xs-3 sidebar">
+    <sidebar title="Account settings" menu-list="sidebarMenuList"></sidebar>
+  </div>
+  <div class="col-xs-9 content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            <div class="row">
+              <div class="col-xs-12">
+                <h4 class="text-muted">Emails</h4>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="email in profile.contacts.emails">
+          <td>
+            <div class="row">
+              <div class="col-xs-3 text-muted">{{ email.label }}</div>
+              <div class="col-xs-7"><a href="mailto:#">{{ email.value }}</a></div>
+              <div class="col-xs-2 col-icons">
+                <a href="" class="icon icon-star" title="Set as primary" ng-class="{ active: email.primary }" ng-click="setPrimary($index)">
+                  <i class="glyphicon glyphicon-star"></i>
+                </a>
+                <a href="" class="icon icon-trash" title="Remove" ng-click="removeEmail($index)">
+                  <i class="glyphicon glyphicon-trash"></i>
+                </a>
+                <a href="" class="icon icon-pencil" title="Edit" ng-click="openEmailEditor($index)">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row">
+              <div class="col-xs-12">
+                <a href="" ng-click="openEmailEditor()">+ Add email</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   </div>
 </div>

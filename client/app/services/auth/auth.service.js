@@ -160,6 +160,20 @@ angular.module('pianoforteApp')
        */
       getToken: function() {
         return $cookieStore.get('token');
+      },
+
+      updateCurrentUserProfile: function (profile) {
+        var role = currentUser.role;
+
+        if (role === 'teacher') {
+          currentUser.profile.teacher = angular.copy(profile);
+        } else if (role === 'admin') {
+          currentUser.profile.employee = angular.copy(profile);
+        } else if (role === 'manager') {
+          currentUser.profile.employee = angular.copy(profile);
+        } else if (role === 'employee') {
+          currentUser.profile.employee = angular.copy(profile);
+        }
       }
     };
   });

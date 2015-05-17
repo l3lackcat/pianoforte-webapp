@@ -2,8 +2,8 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-3 sidebar" sidebar></div>
-    <div class="col-xs-9 content">
+    <!-- <div class="col-xs-3 sidebar" sidebar></div> -->
+    <div class="col-xs-12 content">
       <h2 class="page-header">
         <span>Employee List</span>
         <a class="btn btn-primary pull-right" href="/admin/employees/new"><i class="glyphicon glyphicon-plus"></i> Add</a>
@@ -21,7 +21,7 @@
         <div class="col-xs-12">
           <table ng-table="tableParams" class="table table-hover table-condensed">
             <tr ng-repeat="employee in employeeList">
-              <td data-title="'#'" class="text-center" width="8%">
+              <td data-title="'#'" class="text-center" width="10%">
                 {{ $index + 1 }}
               </td>
               <td data-title="'Name'" class="text-left" width="28%">
@@ -36,7 +36,7 @@
               <td data-title="'Branch'" class="text-center" width="28%">
                 {{ employee.branch.name }}
               </td>
-              <td data-title="''" class="text-center" width="12%">
+              <td data-title="''" class="text-center" width="10%">
                 <a href="/admin/employees/info/{{ employee._id }}">View</a>
               </td>
             </tr>

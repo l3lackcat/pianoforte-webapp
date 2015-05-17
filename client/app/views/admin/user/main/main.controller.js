@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pianoforteApp')
-  .controller('AdminUserMainCtrl', function ($scope, $location, ngTableParams, NamingManager, User) {
+  .controller('AdminUserMainCtrl', function ($scope, $location, ngTableParams, User) {
     $scope.userList = [];
     $scope.userList = User.query();
 

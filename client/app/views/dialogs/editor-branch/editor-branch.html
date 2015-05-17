@@ -1,0 +1,27 @@
+<div id="branch-editor">
+  <div class="modal-header">
+    <h4 class="modal-title">Branch Editor</h4>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal">
+      <!-- Branch name -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="input-branch-name" class="col-xs-4 control-label">Name:</label>
+            <div class="col-xs-6">
+              <input type="text" id="input-branch-name" name="value" class="form-control" placeholder="Branch name" ng-model="branch.name" autofocus required />
+              <p class="text-danger" ng-show="errors.branchName != ''">
+                <em>{{ errors.branchName }}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-click="onSubmit()">Save</button>
+    <button class="btn btn-danger" ng-click="onCancel()">Cancel</button>
+  </div>
+</div>

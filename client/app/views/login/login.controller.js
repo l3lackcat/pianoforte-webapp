@@ -19,8 +19,7 @@ angular.module('pianoforteApp')
         Auth.login({
           email: emailPrefix + $scope.user.email,
           password: $scope.user.password
-        })
-        .then( function() {
+        }).then( function() {
           // Logged in, redirect to home
           $scope.errors.message = '';
 
@@ -29,8 +28,7 @@ angular.module('pianoforteApp')
           } else {
             $location.path('/');
           }
-        })
-        .catch( function(err) {
+        }).catch( function(err) {
           $scope.errors.message = err.message;
         });
       } else {

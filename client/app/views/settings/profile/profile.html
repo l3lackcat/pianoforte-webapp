@@ -12,7 +12,7 @@
             <th>
               <div class="row">
                 <div class="col-xs-9">
-                  <h4 class="text-muted">English</h4>
+                  <h4 class="text-muted">English profile</h4>
                 </div>
                 <div class="col-xs-3">
                   <button class="btn btn-primary pull-right" ng-click="openEnglishProfileEditor()">
@@ -56,7 +56,7 @@
             <th>
               <div class="row">
                 <div class="col-xs-9">
-                  <h4 class="text-muted">Thai</h4>
+                  <h4 class="text-muted">Thai profile</h4>
                 </div>
                 <div class="col-xs-3">
                   <button class="btn btn-primary pull-right" ng-click="openThaiProfileEditor()">
@@ -98,7 +98,7 @@
                 <div class="col-xs-3 text-muted">เพศ</div>
                 <div class="col-xs-9" ng-hide="profile.gender == undefined"><strong>{{ profile.gender }}</strong></div>
                 <div class="col-xs-9" ng-show="profile.gender == undefined">
-                  <a href="" ng-click="editThaiProfile()">+ Add gender</a>
+                  <a href="" ng-click="openThaiProfileEditor()">+ Add gender</a>
                 </div>
               </div>
             </td>

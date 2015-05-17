@@ -2,11 +2,11 @@
 
 angular.module('pianoforteApp')
   .factory('ProfileFactory', function () {
-    var toTitleCase = function (str) {
-      return str.replace(/\w\S*/g, function (txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      });
-    };
+    // var toTitleCase = function (str) {
+    //   return str.replace(/\w\S*/g, function (txt) {
+    //     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    //   });
+    // };
 
     return {
       // getDisplayedName: function (profile) {
@@ -52,7 +52,7 @@ angular.module('pianoforteApp')
         var role = '';
 
         if ((profile !== null) && (profile !== undefined)) {
-          role = toTitleCase(profile.role);
+          role = _.capitalize(profile.role);
         }
 
         return role;

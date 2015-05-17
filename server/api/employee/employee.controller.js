@@ -65,13 +65,8 @@ exports.create = function (req, res) {
     Employee.create(employee, function (err, employee) {
       if (err) { return handleError (res, err); }
 
-      var displayedName1 = employee.firstname.en.replace(/\w\S*/g, function (txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      });
-
-      var displayedName2 = employee.lastname.en.replace(/\w\S*/g, function (txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      });
+      var displayedName1 = _.capitalize(employee.firstname.en);
+      var displayedName2 = _.capitalize(employee.lastname.en);
 
       User.create({
         displayedName: displayedName1 + ' ' + displayedName2.charAt(0),

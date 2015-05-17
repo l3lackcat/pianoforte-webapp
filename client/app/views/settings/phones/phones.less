@@ -1,0 +1,37 @@
+#settings-phones {
+  .content {
+    table {
+      tbody {
+        tr {
+          td {
+            .row {
+              .col-icons {
+                a {
+                  &.icon {
+                    float: right;
+                    padding-left: 10px;
+
+                    &.icon-star.active { color: #f0ad4e; }
+                    &.icon-trash { visibility: hidden; }
+                    &.icon-pencil { visibility: hidden; }
+                  }
+                }
+              }
+
+              &:hover {
+                .col-icons {
+                  a {
+                    &.icon { 
+                      &.icon-trash { visibility: visible; }
+                      &.icon-pencil { visibility: visible; }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

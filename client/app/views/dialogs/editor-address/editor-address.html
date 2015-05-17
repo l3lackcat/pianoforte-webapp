@@ -1,0 +1,98 @@
+<div id="address-editor">
+  <div class="modal-header">
+    <h4 class="modal-title">Address Editor</h4>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal">
+      <!-- BuildingName -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="input-building-name" class="col-xs-4 control-label">ชื่ออาคาร:</label>
+            <div class="col-xs-8">
+              <input type="text" id="input-building-name" name="buildingName" class="form-control" placeholder="Building name" ng-model="address.buildingName" autofocus required />
+              <p class="text-danger" ng-show="errors.buildingName != ''">
+                <em>{{ errors.buildingName }}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- StreetAddress -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="input-street-address" class="col-xs-4 control-label">เลขที่/ซอย ถนน:</label>
+            <div class="col-xs-8">
+              <input type="text" id="input-street-address" name="streetAddress" class="form-control" placeholder="Street address" ng-model="address.streetAddress" required />
+              <p class="text-danger" ng-show="errors.streetAddress != ''">
+                <em>{{ errors.streetAddress }}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SubDistrict -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="input-sub-district" class="col-xs-4 control-label">แขวง/ตำบล:</label>
+            <div class="col-xs-8">
+              <ui-select ng-model="subDistrict.selected" on-select="onSelectSubDistrict($item)" required>
+                <ui-select-match placeholder="Please select...">{{ $select.selected.SubDistrict }}</ui-select-match>
+                <ui-select-choices repeat="subDistrict in subDistrictList track by $index" refresh="refreshSubDistrictList($select.search)" refresh-delay="0">
+                  <div ng-bind-html="subDistrict.DisplayedText | highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+              <p class="text-danger" ng-show="errors.subDistrict != ''">
+                <em>{{ errors.subDistrict }}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- District -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="input-district" class="col-xs-4 control-label">เขต/อำเภอ:</label>
+            <div class="col-xs-4">
+              <input type="text" id="input-district" name="district" class="form-control" ng-model="address.district" readonly />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Province -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="input-province" class="col-xs-4 control-label">จังหวัด:</label>
+            <div class="col-xs-4">
+              <input type="text" id="input-province" name="province" class="form-control" ng-model="address.province" readonly />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZipCode -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="input-postcode" class="col-xs-4 control-label">รหัสไปรษณีย์:</label>
+            <div class="col-xs-4">
+              <input type="text" id="input-postcode" name="postcode" class="form-control" ng-model="address.postcode" readonly />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-click="onSubmit()">Save</button>
+    <button class="btn btn-danger" ng-click="onCancel()">Cancel</button>
+  </div>
+</div>

@@ -2,11 +2,59 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-3 sidebar" sidebar></div>
-    <div class="col-xs-9 content">
+    <!-- <div class="col-xs-9 content">
       <h2 class="page-header">
-        <span>Branch Info</span>
+        <span></span>
       </h2>
+    </div> -->
+    <div class="col-xs-3 sidebar">
+      <sidebar title="Account settings" menu-list="sidebarMenuList"></sidebar>
+    </div>
+    <div class="col-xs-9 content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              <div class="row">
+                <div class="col-xs-9">
+                  <h4 class="text-muted">Branch Info</h4>
+                </div>
+                <div class="col-xs-3">
+                  <button class="btn btn-primary pull-right" ng-click="openEnglishProfileEditor()">
+                    <i class="glyphicon glyphicon-pencil"></i> Edit
+                  </button>
+                </div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-3 text-muted">Name</div>
+                <div class="col-xs-9"><strong>{{ branch.name }}</strong></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-3 text-muted">Phone</div>
+                <div class="col-xs-9"><strong>{{ branch.phones.office }}</strong></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-3 text-muted">Mobile</div>
+                <div class="col-xs-9"><strong>{{ branch.phones.mobile }}</strong></div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

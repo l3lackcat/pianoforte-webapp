@@ -1,0 +1,44 @@
+<div id="phone-editor">
+  <div class="modal-header">
+    <h4 class="modal-title">Phone Editor</h4>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal">
+      <!-- Label -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="input-label" class="col-xs-4 control-label">Label:</label>
+            <div class="col-xs-6">
+              <input type="text" id="input-label" name="label" class="form-control" placeholder="เบอร์โทร" ng-model="phone.label" required />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Value -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="input-value" class="col-xs-4 control-label">Phone number:</label>
+            <div class="col-xs-6">
+              <input type="text" id="input-value" name="value" class="form-control" placeholder="Ex. 0899999999" ng-model="phone.value" autofocus required />
+              <p class="text-danger" ng-show="errors.value != ''">
+                <em>{{ errors.value }}</em>
+              </p>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" ng-model="phone.primary"> Set as primary
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-click="onSubmit()">Save</button>
+    <button class="btn btn-danger" ng-click="onCancel()">Cancel</button>
+  </div>
+</div>

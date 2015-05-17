@@ -2,11 +2,11 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-3 sidebar" sidebar></div>
-    <div class="col-xs-9 content">
+    <!-- <div class="col-xs-3 sidebar" sidebar></div> -->
+    <div class="col-xs-12 content">
       <h2 class="page-header">
         <span>Branch List</span>
-        <a class="btn btn-primary pull-right" href="/admin/branches/new"><i class="glyphicon glyphicon-plus"></i> Add</a>
+        <a href="" class="btn btn-primary pull-right" ng-click="openBranchEditor()"><i class="glyphicon glyphicon-plus"></i> Add</a>
       </h2>
 
       <div class="row">
@@ -21,19 +21,19 @@
         <div class="col-xs-12">
           <table ng-table="tableParams" class="table table-hover table-condensed">
             <tr ng-repeat="branch in branchList">
-              <td data-title="'#'" class="text-center" width="8%">
+              <td data-title="'#'" class="text-center" width="10%">
                 {{ $index + 1 }}
               </td>
-              <td data-title="'Branch name'" header-class="text-left" width="48%">
+              <td data-title="'Branch name'" header-class="text-left" width="40%">
                 {{ branch.name }}
               </td>
-              <td data-title="'Created date'" class="text-center" width="20%">
-                {{ branch.createdDate | date:'dd-MM-yyyy' }}
+              <td data-title="'Office'" class="text-center" width="20%">
+                {{ branch.phones.school }}
               </td>
-              <td data-title="'Creator'" class="text-center" width="16%">
-                {{ branch.createdBy.displayedName }}
+              <td data-title="'Mobile'" class="text-center" width="20%">
+                {{ branch.phones.mobile }}
               </td>
-              <td data-title="''" width="8%" class="text-center">
+              <td data-title="''" width="10%" class="text-center">
                 <a href="/admin/branches/info/{{ branch._id }}">View</a>
               </td>
             </tr>
