@@ -3,56 +3,62 @@
 <div class="container" id="settings-addresses">
   <div class="row">
     <div class="col-xs-3 sidebar">
-    <sidebar title="Account settings" menu-list="sidebarMenuList"></sidebar>
-  </div>
-  <div class="col-xs-9 content">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>
-            <div class="row">
-	            <div class="col-xs-12">
-                <h4 class="text-muted">Address</h4>
+      <div>
+        <a href="" class="thumbnail">
+          <span style="height: 180px; width: 100%; display: block;"></span>
+        </a>
+      </div>
+      <sidebar title="Account settings" menu-list="sidebarMenuList"></sidebar>
+    </div>
+    <div class="col-xs-9 content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              <div class="row">
+  	            <div class="col-xs-12">
+                  <h4 class="text-muted">Address</h4>
+                </div>
               </div>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody ng-repeat="address in profile.addresses">
-        <tr>
-          <td>
-            <div class="row">
-              <div class="col-xs-10">
-                <address>
-                  <strong>{{ address.buildingName }}</strong><br>
-                  {{ address.streetAddress }}<br>
-                  {{ address.subDistrict + ' ' + address.district + ' ' + address.province + ' ' + address.postcode }}<br>
-                </address>
+            </th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="address in profile.addresses">
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-10">
+                  <address>
+                    <strong>{{ address.buildingName }}</strong><br />
+                    {{ address.streetAddress }}<br />
+                    {{ address | displayedAddressFilter }}<br />
+                    {{ address.postcode }}<br />
+                  </address>
+                </div>
+                <div class="col-xs-2 col-icons">
+                  <a href="" class="icon icon-trash" title="Remove" ng-click="removeAddress($index)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </a>
+                  <a href="" class="icon icon-pencil" title="Edit" ng-click="openAddressEditor($index)">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </a>
+                </div>
               </div>
-              <div class="col-xs-2 col-icons">
-                <a href="" class="icon icon-trash" title="Remove" ng-click="removeAddress($index)">
-                  <i class="glyphicon glyphicon-trash"></i>
-                </a>
-                <a href="" class="icon icon-pencil" title="Edit" ng-click="openAddressEditor($index)">
-                  <i class="glyphicon glyphicon-pencil"></i>
-                </a>
+            </td>
+          </tr>
+        </tbody>
+        <tbody ng-show="profile.addresses.length == 0">
+        	<tr>
+            <td>
+              <div class="row">
+                <div class="col-xs-12">
+                  <a href="" ng-click="openAddressEditor()">+ Add address</a>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-      <tbody ng-show="profile.addresses.length == 0">
-      	<tr>
-          <td>
-            <div class="row">
-              <div class="col-xs-12">
-                <a href="" ng-click="openAddressEditor()">+ Add address</a>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

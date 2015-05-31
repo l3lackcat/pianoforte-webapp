@@ -13,11 +13,18 @@ angular.module('pianoforteApp')
         templateUrl: 'app/views/dialogs/editor-branch/editor-branch.html',
         controller: 'BranchEditorDialogCtrl',
         backdrop: 'static',
-        keyboard: true
+        keyboard: true,
+        size: 'lg'
       },
       'ConfirmDialog': {
         templateUrl: 'app/views/dialogs/dialog-confirm/dialog-confirm.html',
         controller: 'ConfirmDialogCtrl',
+        backdrop: 'static',
+        keyboard: true
+      },
+      'InputDialog': {
+        templateUrl: 'app/views/dialogs/dialog-input/dialog-input.html',
+        controller: 'InputDialogCtrl',
         backdrop: 'static',
         keyboard: true
       },

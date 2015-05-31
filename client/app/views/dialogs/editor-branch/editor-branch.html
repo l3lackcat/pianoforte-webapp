@@ -1,19 +1,138 @@
 <div id="branch-editor">
   <div class="modal-header">
-    <h4 class="modal-title">Branch Editor</h4>
+    <h4 class="modal-title">Create branch</h4>
   </div>
   <div class="modal-body">
     <form class="form-horizontal">
-      <!-- Branch name -->
+      <h4 class="page-header text-muted">General Information</h4>
       <div class="row">
+        <!-- Branch name -->
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="input-branch-name" class="col-xs-4 control-label">Name:</label>
-            <div class="col-xs-6">
+            <label for="input-branch-name" class="col-xs-2 control-label">Name</label>
+            <div class="col-xs-4">
               <input type="text" id="input-branch-name" name="value" class="form-control" placeholder="Branch name" ng-model="branch.name" autofocus required />
               <p class="text-danger" ng-show="errors.branchName != ''">
                 <em>{{ errors.branchName }}</em>
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="page-header text-muted">Contact Information</h4>
+      <div class="row">
+        <div class="col-xs-6">
+          <!-- Branch's phone number -->
+          <div class="form-group">
+            <label for="input-branch-phone" class="col-xs-4 control-label">Phone</label>
+            <div class="col-xs-8">
+              <input type="text" id="input-branch-phone" name="value" class="form-control" placeholder="Ex. 02-999-9999" ng-model="phone" required />
+              <p class="text-danger" ng-show="errors.branchPhone != ''">
+                <em>{{ errors.branchPhone }}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <!-- Branch's mobile number -->
+          <div class="form-group">
+            <label for="input-branch-mobile" class="col-xs-4 control-label">Mobile</label>
+            <div class="col-xs-8">
+              <input type="text" id="input-branch-mobile" name="value" class="form-control" placeholder="Ex. 089-999-9999" ng-model="mobile" required />
+              <p class="text-danger" ng-show="errors.branchMobile != ''">
+                <em>{{ errors.branchMobile }}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- Branch's email address -->
+          <div class="form-group">
+            <label for="input-branch-email" class="col-xs-2 control-label">Email</label>
+            <div class="col-xs-4">
+              <input type="text" id="input-branch-email" name="value" class="form-control" placeholder="Ex. name@mail.com" ng-model="email" required />
+              <p class="text-danger" ng-show="errors.branchEmail != ''">
+                <em>{{ errors.branchEmail }}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="page-header text-muted">Address Information</h4>
+      <div class="row">
+        <div class="col-xs-6">
+          <!-- Building mame -->
+          <div class="form-group">
+            <label for="input-building-name" class="col-xs-4 control-label">Building name</label>
+            <div class="col-xs-8">
+              <input type="text" id="input-building-name" name="buildingName" class="form-control" placeholder="Building name" ng-model="address.buildingName" autofocus required />
+              <p class="text-danger" ng-show="errors.buildingName != ''">
+                <em>{{ errors.buildingName }}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <!-- Street Address -->
+          <div class="form-group">
+            <label for="input-street-address" class="col-xs-4 control-label">Street address</label>
+            <div class="col-xs-8">
+              <input type="text" id="input-street-address" name="streetAddress" class="form-control" placeholder="Street address" ng-model="address.streetAddress" required />
+              <p class="text-danger" ng-show="errors.streetAddress != ''">
+                <em>{{ errors.streetAddress }}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <!-- Sub-district -->
+          <div class="form-group">
+            <label for="input-sub-district" class="col-xs-4 control-label">Sub-district</label>
+            <div class="col-xs-8">
+              <ui-select ng-model="subDistrict.selected" on-select="onSelectSubDistrict($item)" required>
+                <ui-select-match placeholder="Please select...">{{ $select.selected.SubDistrict }}</ui-select-match>
+                <ui-select-choices repeat="subDistrict in subDistrictList" value="{{$select.selected.SubDistrict}}" refresh="refreshSubDistrictList($select.search)" refresh-delay="0">
+                  <div ng-bind-html="subDistrict.DisplayedText | highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+              <p class="text-danger" ng-show="errors.subDistrict != ''">
+                <em>{{ errors.subDistrict }}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <!-- District -->
+          <div class="form-group">
+            <label for="input-district" class="col-xs-4 control-label">District</label>
+            <div class="col-xs-8">
+              <input type="text" id="input-district" name="district" class="form-control" ng-model="address.district" readonly />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <!-- Province -->
+          <div class="form-group">
+            <label for="input-province" class="col-xs-4 control-label">Province</label>
+            <div class="col-xs-8">
+              <input type="text" id="input-province" name="province" class="form-control" ng-model="address.province" readonly />
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <!-- Postcode -->
+          <div class="form-group">
+            <label for="input-postcode" class="col-xs-4 control-label">Postcode</label>
+            <div class="col-xs-8">
+              <input type="text" id="input-postcode" name="postcode" class="form-control" ng-model="address.postcode" readonly />
             </div>
           </div>
         </div>

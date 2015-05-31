@@ -6,11 +6,18 @@ var autoIncrement = require('mongoose-auto-increment');
 
 var BranchSchema = new Schema({
   name: String,
-  phones: {
-    school: String,
-    mobile: String
+  contacts: {
+    phones: [{
+      label: String,
+      value: String,
+      primary: { type: Boolean, default: false }
+    }],
+    emails: [{
+      label: String,
+      value: String,
+      primary: { type: Boolean, default: false }
+    }]
   },
-  email: String,
   address: {
     buildingName: String,
     streetAddress: String,
@@ -20,6 +27,7 @@ var BranchSchema = new Schema({
     country: String,
     postcode: String
   },
+  manager: { type: Schema.Types.ObjectId, ref: 'Employee' },
   createdDate: { type : Date, default : Date.now },
   createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
   edittedDate: { type : Date, default : null },

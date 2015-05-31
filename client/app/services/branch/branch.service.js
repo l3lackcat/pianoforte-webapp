@@ -34,6 +34,33 @@ angular.module('pianoforteApp')
         }.bind(this));
 
         return deferred.promise;
+      },
+
+      update: function (branch, callback) {
+        var cb = callback || angular.noop;
+        var deferred = $q.defer();
+        var url = '/api/branches/update/' + branch._id;
+
+        if (branch.manager !== undefined) {
+          branch.manager = branch.manager._id || null;
+        }
+        
+        if (branch.createdBy !== undefined) {
+          branch.createdBy = branch.createdBy._id || null;
+        }
+
+        branch.edittedBy = Auth.getCurrentUser()._id;
+        branch.edittedDate = moment();
+
+        $http.post(url, branch).success(function (data) {
+          deferred.resolve(data);
+          return cb();
+        }).error(function (err) {
+          deferred.reject(err);
+          return cb(err);
+        }.bind(this));
+
+        return deferred.promise;
       }
     };
   });

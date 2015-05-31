@@ -1,43 +1,152 @@
 <div navbar></div>
 
-<div class="container">
+<div class="container" id="branch-main">
   <div class="row">
     <!-- <div class="col-xs-3 sidebar" sidebar></div> -->
     <div class="col-xs-12 content">
       <h2 class="page-header">
-        <span>Branch List</span>
+        <span class="text-muted">Branch List</span>
+        <!-- <a href="/admin/branches/new" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i> Add</a> -->
         <a href="" class="btn btn-primary pull-right" ng-click="openBranchEditor()"><i class="glyphicon glyphicon-plus"></i> Add</a>
       </h2>
 
-      <div class="row">
+      <div class="row row-search">
         <div class="col-xs-offset-8 col-xs-4">
           <div class="input-group pull-right">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchInput" />
             <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
-          <table ng-table="tableParams" class="table table-hover table-condensed">
-            <tr ng-repeat="branch in branchList">
-              <td data-title="'#'" class="text-center" width="10%">
-                {{ $index + 1 }}
-              </td>
-              <td data-title="'Branch name'" header-class="text-left" width="40%">
-                {{ branch.name }}
-              </td>
-              <td data-title="'Office'" class="text-center" width="20%">
-                {{ branch.phones.school }}
-              </td>
-              <td data-title="'Mobile'" class="text-center" width="20%">
-                {{ branch.phones.mobile }}
-              </td>
-              <td data-title="''" width="10%" class="text-center">
-                <a href="/admin/branches/info/{{ branch._id }}">View</a>
-              </td>
-            </tr>
-          </table>
+        <div class="col-xs-6" ng-repeat="branch in branchList | filter: searchInput as results">
+          <div class="panel panel-primary">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="row">
+                        <div class="col-xs-3 text-muted">Name</div>
+                        <div class="col-xs-8"><strong>{{ branch.name }}</strong></div>
+                        <div class="col-xs-1 col-icons">
+                          <a href="" class="icon icon-pencil" title="Edit" ng-click="openBranchNameEditor($index)">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="row" ng-show="branch.contacts.phones.length > 0">
+                        <div class="col-xs-3 text-muted">Phone</div>
+                        <div class="col-xs-8"><strong>{{ branch.contacts.phones[0].value | displayedPhoneFilter }}</strong></div>
+                        <div class="col-xs-1 col-icons">
+                          <a href="" class="icon icon-pencil" title="Edit" ng-click="openPhoneEditor($index, 0)">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row" ng-show="branch.contacts.phones.length == 0">
+                        <div class="col-xs-3 text-muted">Phone</div>
+                        <div class="col-xs-9">
+                          <a href="" ng-click="openPhoneEditor($index, 0)">+ Add phone</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="row" ng-show="branch.contacts.phones.length > 1">
+                        <div class="col-xs-3 text-muted">Mobile</div>
+                        <div class="col-xs-8"><strong>{{ branch.contacts.phones[1].value | displayedPhoneFilter }}</strong></div>
+                        <div class="col-xs-1 col-icons">
+                          <a href="" class="icon icon-pencil" title="Edit" ng-click="openPhoneEditor($index, 1)">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row" ng-show="branch.contacts.phones.length == 0 || branch.contacts.phones.length == 1">
+                        <div class="col-xs-3 text-muted">Mobile</div>
+                        <div class="col-xs-9">
+                          <a href="" ng-click="openPhoneEditor($index, 1)">+ Add mobile</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="row" ng-show="branch.contacts.emails.length > 0">
+                        <div class="col-xs-3 text-muted">Email</div>
+                        <div class="col-xs-8"><a href="mailto:#">{{ branch.contacts.emails[0].value }}</a></div>
+                        <div class="col-xs-1 col-icons">
+                          <a href="" class="icon icon-pencil" title="Edit" ng-click="openEmailEditor($index, 0)">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row" ng-show="branch.contacts.emails.length == 0">
+                        <div class="col-xs-3 text-muted">Email</div>
+                        <div class="col-xs-9">
+                          <a href="" ng-click="openEmailEditor($index, 0)">+ Add email</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="row" ng-show="branch.address != undefined">
+                        <div class="col-xs-3 text-muted">Address</div>
+                        <div class="col-xs-8">
+                          <address>
+                            <strong>{{ branch.address.buildingName }}</strong><br />
+                            {{ branch.address.streetAddress }}<br />
+                            {{ branch.address | displayedAddressFilter }}<br />
+                            {{ branch.address.postcode }}<br />
+                          </address>
+                        </div>
+                        <div class="col-xs-1 col-icons">
+                          <a href="" class="icon icon-pencil" title="Edit" ng-click="openAddressEditor($index)">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row" ng-show="branch.address == undefined">
+                        <div class="col-xs-3 text-muted">Address</div>
+                        <div class="col-xs-9">
+                          <a href="" ng-click="openAddressEditor($index)">+ Add address</a><br /><br /><br /><br />
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="row" ng-show="branch.manager != undefined">
+                        <div class="col-xs-3 text-muted">Manager</div>
+                        <div class="col-xs-8"><a href="#">{{ branch.manager }}</a></div>
+                        <div class="col-xs-1 col-icons">
+                          <a href="" class="icon icon-pencil" title="Edit" ng-click="">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row" ng-show="branch.manager == undefined">
+                        <div class="col-xs-3 text-muted">Manager</div>
+                        <div class="col-xs-9">
+                          <a href="" ng-click="openPhoneEditor()">+ Add manager</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-info" ng-if="results.length == 0">
+          <strong>No results found...</strong>
         </div>
       </div>
     </div>

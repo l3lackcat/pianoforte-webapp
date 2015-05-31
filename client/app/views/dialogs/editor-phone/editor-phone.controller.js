@@ -13,6 +13,7 @@ angular.module('pianoforteApp')
         $scope.errors.value = 'Please enter a valid phone number';
         isValid = false;
       } else {
+        value.replace(/-/g , '');
         delete $scope.errors.value;
       }
 

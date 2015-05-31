@@ -3,13 +3,24 @@
 angular.module('pianoforteApp')
   .controller('AddressEditorDialogCtrl', function ($scope, $modalInstance, AddressFactory, address) {
     $scope.address = address || {};
-    $scope.errors = {};
+    $scope.subDistrict = {
+      selected: address.subDistrict || ''
+    };
     $scope.subDistrictList = [];
+    $scope.errors = {};
 
     $scope.refreshSubDistrictList = function (subDistrict) {
       if (subDistrict !== '') {
         $scope.subDistrictList = AddressFactory.getSubDistrictList(subDistrict);
       }
+    };
+
+    $scope.onSelectSubDistrict = function (subDistrictData) {
+      $scope.address.subDistrict = subDistrictData.SubDistrict;
+      $scope.address.district = subDistrictData.District;
+      $scope.address.province = subDistrictData.Province;
+      $scope.address.postcode = subDistrictData.Postcode;
+      $scope.address.country = 'ไทย';
     };
 
     $scope.onSubmit = function () {
@@ -45,13 +56,5 @@ angular.module('pianoforteApp')
       $event.stopPropagation();
 
       $scope.opened = true;
-    };
-
-    $scope.onSelectSubDistrict = function (subDistrictData) {
-      $scope.address.subDistrict = subDistrictData.SubDistrict;
-      $scope.address.district = subDistrictData.District;
-      $scope.address.province = subDistrictData.Province;
-      $scope.address.postcode = subDistrictData.Postcode;
-      $scope.address.country = 'ไทย';
     };
   });

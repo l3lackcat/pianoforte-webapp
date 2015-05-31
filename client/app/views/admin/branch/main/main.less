@@ -7,3 +7,53 @@
     }
   }
 }
+
+#branch-main {
+  .row-search {
+    margin-bottom: 22px;
+  }
+
+  .panel {
+    .panel-body {
+      .table {
+        margin-bottom: 0;
+        
+        tbody {
+          tr {
+            &:first-child {
+              td {
+                border-top: 0;
+              }
+            }
+
+            td {
+              .row {
+                address {
+                  margin-bottom: 0;
+                }
+
+                .col-icons {
+                  a {
+                    &.icon {
+                      &.icon-pencil { visibility: hidden; }
+                    }
+                  }
+                }
+
+                &:hover {
+                  .col-icons {
+                    a {
+                      &.icon { 
+                        &.icon-pencil { visibility: visible; }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }   
+    }
+  }
+}

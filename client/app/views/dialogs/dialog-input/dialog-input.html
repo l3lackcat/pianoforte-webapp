@@ -1,0 +1,26 @@
+<div id="dialog-input">
+  <div class="modal-header">
+    <h4 class="modal-title">{{ properties.title }}</h4>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="input-value" class="col-xs-4 control-label">{{ properties.label }}</label>
+            <div class="col-xs-6">
+              <input type="text" id="input-value" name="value" class="form-control" placeholder="{{ properties.placeholder }}" ng-model="properties.value" autofocus />
+              <p class="text-danger" ng-show="properties.isRequired && errors.value != ''">
+                <em>{{ errors.value }}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-click="onSubmit()">Submit</button>
+    <button class="btn btn-danger" ng-click="onCancel()">Cancel</button>
+  </div>
+</div>
